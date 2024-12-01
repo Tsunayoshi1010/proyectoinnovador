@@ -7,6 +7,7 @@ import App from "../App";
 import Enterprises from "../pages/Enterprises/Enterprises";
 import ProtectedRoute from "../Components/common/ProtectedRoute/ProtectedRoute";
 import Profile from "../pages/Profile/Profile";
+import SignUp from "../pages/SignUp/SignUp";
 
 export const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      {
+        path: "/signup",
+        element: <SignUp/>
+      }
     ],
   },
   {

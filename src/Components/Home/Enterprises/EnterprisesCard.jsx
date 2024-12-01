@@ -3,7 +3,7 @@ import "./EnterprisesCard.css";
 
 const EnterprisesCard = ({ enterprise }) => {
   return (
-    <article>
+    <article className="container__card">
       <header>
         <div>
           <h3>TITULO</h3>

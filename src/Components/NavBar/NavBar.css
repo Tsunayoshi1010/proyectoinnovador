@@ -3,6 +3,18 @@
   justify-content: space-around;
 }
 
+.logo_nav img {
+  height: 50px ;
+}
+.login_nav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 .navigation_items .ul_links {
   display: flex;
   justify-content: space-between;
@@ -21,4 +33,12 @@
 .navbar__link--active, .navbar__link:hover {
   color: blue;
   font-weight: 800;
+}
+
+.sign_interaction svg {
+  font-size: 20px;
+}
+.profile_btn svg {
+  font-size: 20px;
+  
 }

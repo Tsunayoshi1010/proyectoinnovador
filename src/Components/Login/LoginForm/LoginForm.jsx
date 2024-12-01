@@ -1,6 +1,9 @@
 import { useId, useState } from "react";
 import "./LoginForm.css";
 import { FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FiLogIn } from "react-icons/fi";
+
 
 const LoginForm = ({onLogin}) => {
   const nameId = useId();
@@ -52,6 +55,9 @@ const LoginForm = ({onLogin}) => {
         <FaEye />
       </button>
       <button type="submit">Login</button>
+      <div>
+        <Link to="/signup" >Sign up</Link>
+      </div>
     </form>
   );
 };

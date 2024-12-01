@@ -1,7 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, Navigate } from "react-router-dom";
 
 const UserInteraction = ({ post }) => {
+  const isLogged = useSelector((store) => store.authSlice.isLogged);
   const [likes, setLikes] = useState(post.likes || 0);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -66,24 +69,41 @@ const UserInteraction = ({ post }) => {
   return (
     <div>
       <p>
-        <mark>counter:</mark> {`${likes}`}
+        <mark>Likes:</mark> {`${likes}`}
       </p>
-      <button onClick={handleLike}> {isLiked ? "Unlike" : "Like"}</button>
-      <div className="comments">
+      {isLogged ? (
+        <button onClick={handleLike}> {isLiked ? "Unlike" : "Like"}</button>
+      ) : (
+        <button>
+          {" "}
+          <Link to={"/login"}>Like</Link>{" "}
+        </button>
+      )}
+
+      <div>
         <h4>Comentarios</h4>
-        {comments.map((comment, index) => (
-          <p key={index}>{comment}</p>
-        ))}
-        <form onSubmit={handleCommentSubmit}>
-          <input
-            type="text"
-            value={newComment}
-            onChange={handleCommentChange}
-            placeholder="Añadir un comentario"
-          />
-          <button type="submit">Enviar</button>
-        </form>
+        <ul>
+          {comments.map((comment, index) => (
+            <li key={index}>{comment}</li>
+          ))}
+        </ul>
       </div>
+
+      {isLogged ? (
+        <div className="comments">
+          <form onSubmit={handleCommentSubmit}>
+            <input
+              type="text"
+              value={newComment}
+              onChange={handleCommentChange}
+              placeholder="Añadir un comentario"
+            />
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+      ) : (
+        <p>For letting a comment, you must be authenticated</p>
+      )}
     </div>
   );
 };

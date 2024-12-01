@@ -6,6 +6,14 @@ const emptyState = {
   token: "",
   fullName: "",
   email: "",
+  username: "",
+  locked: false,
+  disable: false,
+  experience: "",
+  contact: "",
+  speciality: "",
+  city: "",
+  roles: "",
   isLogged: false,
 };
 
@@ -20,8 +28,16 @@ const authSlice = createSlice({
       state.id = newUserData.id;
       state.fullName = newUserData.fullName;
       state.email = newUserData.email;
+      state.username = newUserData.username;
+      state.locked = newUserData.locked;
+      state.disable = newUserData.locked;
+      state.experience = newUserData.experience;
+      state.contact = newUserData.contact;
+      state.speciality = newUserData.speciality;
+      state.city = newUserData.city;
+      state.roles = newUserData.roles;
 
-        //aca guardamos la sesion del usuario en el local storage
+      //aca guardamos la sesion del usuario en el local storage
       localStorage.setItem("sessionData", JSON.stringify({ ...state }));
     },
     updateToken(state, action) {
@@ -37,7 +53,7 @@ const authSlice = createSlice({
     },
 
     reset() {
-      localStorage.removeItem("sessionData")
+      localStorage.removeItem("sessionData");
       return emptyState;
     },
   },

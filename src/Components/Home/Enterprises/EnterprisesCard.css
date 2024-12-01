@@ -1,0 +1,11 @@
+
+
+.container__card {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    background-color: #6fffe9
+}

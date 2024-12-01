@@ -3,6 +3,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import { useDispatch, useSelector } from "react-redux";
 import { reset } from "../../store/slices/authSlice";
+import logo1 from "../../img/logo1.png";
+import { FiLogIn } from "react-icons/fi";
+import { FiLogOut } from "react-icons/fi";
+import { FaRegCircleUser } from "react-icons/fa6";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -13,7 +17,7 @@ const NavBar = () => {
 
   const logout = () => {
     dispatch(reset());
-    navigate("/login")
+    navigate("/login");
   };
 
   const getClass = ({ isActive }) =>
@@ -22,7 +26,7 @@ const NavBar = () => {
   return (
     <nav className="nav">
       <div className="logo_nav">
-        <img src="" alt="LOGO" />
+        <img src={logo1} alt={logo1} />
       </div>
       <div className="navigation_items">
         <ul className="ul_links">
@@ -31,11 +35,11 @@ const NavBar = () => {
               HOME
             </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to={"/enterprises"} className={getClass}>
               ENTERPRISES
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to={"/contact"} className={getClass}>
               CONTACT
@@ -49,14 +53,26 @@ const NavBar = () => {
         </ul>
       </div>
       <div className="login_nav">
-        <ul>
-          {!isLogged ? <li>
-            <NavLink to={"/login"}>LOGIN</NavLink>
-          </li> : <button onClick={logout}>LOG OUT</button>}
-          <li>
-            <NavLink to={userTo}>PROFILE</NavLink>
-          </li>
-        </ul>
+        <div>
+          {!isLogged ? (
+            <button className="sign_interaction">
+              <NavLink to={"/login"}>
+                <FiLogIn />
+              </NavLink>
+            </button>
+          ) : (
+            <button className="sign_interaction" onClick={logout}>
+              <FiLogOut />
+            </button>
+          )}
+        </div>
+        <div>
+          <button className="profile_btn">
+            <NavLink to={userTo}>
+              <FaRegCircleUser />
+            </NavLink>
+          </button>
+        </div>
       </div>
     </nav>
   );
