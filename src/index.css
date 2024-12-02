@@ -1,4 +1,4 @@
-:root {
+#root {
   --primary-color: #0b132b; /* Azul primario */
   --secondary-color: #6fffe9; /* Verde secundario */
   --accent-color: #5bc0be; 
@@ -29,6 +29,10 @@ button {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 15px;
+}
+button:hover {
+  background-color: var( --background-color); /* Color del botón al pasar el cursor */
+  color: white;
 }
 
 a {

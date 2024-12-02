@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "./UserInteraction.css";
+import ExpandableText from "./ExpandableText/ExpandableText";
 
 const UserInteraction = ({ post }) => {
   const isLogged = useSelector((store) => store.authSlice.isLogged);
@@ -10,6 +12,11 @@ const UserInteraction = ({ post }) => {
 
   const [comments, setComments] = useState(post.comments || []);
   const [newComment, setNewComment] = useState("");
+
+  const userThatCommentsName = useSelector((store) => store.authSlice.fullName);
+  const userThatCommentsSpeciality = useSelector(
+    (store) => store.authSlice.speciality
+  );
 
   const handleLike = () => {
     const newLikes = isLiked ? likes - 1 : likes + 1;
@@ -67,7 +74,7 @@ const UserInteraction = ({ post }) => {
   };
 
   return (
-    <div>
+    <div className="container__interaction">
       <p>
         <mark>Likes:</mark> {`${likes}`}
       </p>
@@ -80,11 +87,18 @@ const UserInteraction = ({ post }) => {
         </button>
       )}
 
-      <div>
+      <div className="container__comements">
         <h4>Comentarios</h4>
-        <ul>
+        <ul className="comments">
           {comments.map((comment, index) => (
-            <li key={index}>{comment}</li>
+            <li key={index}>
+              <div className="container__owner-post">
+                <p className="name__user-post">{userThatCommentsName}</p>
+                <p className="speciality__user-post">maketero</p>
+              </div>
+
+              <ExpandableText text={comment} maxLength={20} />
+            </li>
           ))}
         </ul>
       </div>
