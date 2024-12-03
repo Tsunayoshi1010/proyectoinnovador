@@ -76,14 +76,14 @@ const UserInteraction = ({ post }) => {
   return (
     <div className="container__interaction">
       <p>
-        <mark>Likes:</mark> {`${likes}`}
+        <mark>Me gusta:</mark> {`${likes}`}
       </p>
       {isLogged ? (
         <button onClick={handleLike}> {isLiked ? "Unlike" : "Like"}</button>
       ) : (
         <button>
           {" "}
-          <Link to={"/login"}>Like</Link>{" "}
+          <Link to={"/login"}>Me gusta</Link>{" "}
         </button>
       )}
 

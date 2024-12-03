@@ -20,12 +20,12 @@ const Footer = () => {
             </li>
             <li>
               <Link className="link" to={"/contact"}>
-                Contact
+                Contacto
               </Link>
             </li>
             <li>
               <Link className="link" to={"/about-us"}>
-                About us
+                Acerca de
               </Link>
             </li>
           </ul>

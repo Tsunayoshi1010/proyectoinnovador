@@ -32,7 +32,7 @@ const NavBar = () => {
         <ul className="ul_links">
           <li>
             <NavLink to={"/"} className={getClass}>
-              HOME
+              INICIO
             </NavLink>
           </li>
           {/* <li>
@@ -42,12 +42,12 @@ const NavBar = () => {
           </li> */}
           <li>
             <NavLink to={"/contact"} className={getClass}>
-              CONTACT
+              CONTACTO
             </NavLink>
           </li>
           <li>
             <NavLink to={"/about-us"} className={getClass}>
-              ABOUT US
+              ACERCA DE
             </NavLink>
           </li>
         </ul>
